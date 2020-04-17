@@ -1,13 +1,18 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 
-export const Todo = ({ todo }) => {
+export const Todo = ({ todo, onRemove }) => {
+
+    const removeTodo = () => {
+        onRemove(todo.id);
+    }
+
     return (
         <View style={styles.todo}>
             <View style={styles.todoDescription}>
                 <Text style={styles.todoText}>{todo.title}</Text>
             </View>
-            <TouchableOpacity style={styles.deleteButton}>
+            <TouchableOpacity style={styles.deleteButton} onPress={removeTodo}>
                 <Text style={styles.deleteText}>x</Text>
             </TouchableOpacity>
         </View>
